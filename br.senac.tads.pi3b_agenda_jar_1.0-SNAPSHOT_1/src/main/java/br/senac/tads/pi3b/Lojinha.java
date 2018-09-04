@@ -52,8 +52,7 @@ public class Lojinha {
         return precoCompra;
     }
     
-    
-    
+       
     
     /**
      * @return the precoVenda

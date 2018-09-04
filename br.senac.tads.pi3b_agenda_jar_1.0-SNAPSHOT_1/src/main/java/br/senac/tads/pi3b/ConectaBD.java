@@ -65,8 +65,7 @@ public class ConectaBD {
         }
 
     }
-    
-    public void adicionarProduto() {
+        public void adicionarProduto() {
 
         String querySql = "INSERT INTO PRODUTO(NOME,DESCRICAO,PRECO_COMPRA,PRECO_VENDA,QUANTIDADE,DT_CADASTRO" + "VALUES(?,?,?,?,?,?)"
         
@@ -87,8 +86,7 @@ public class ConectaBD {
             throw new RuntimeException(u);
         } 
          
-             
-         
+                    
                 
            }
 }
