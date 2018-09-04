@@ -33,6 +33,10 @@ public class Lojinha {
     public String getNome() {
         return nome;
     }
+    
+     public String getData() {
+        return data;
+    }
 
     /**
      * @return the descricao

@@ -29,7 +29,8 @@ public class ConectaBD {
 
         return conn;
     }
-
+    
+    
     public void executar() {
 
         String querySql = "SELECT ID,NOME,DESCRICAO,PRECO_COMPRA,PRECO_VENDA,QUANTIDADE,DT_CADASTRO FROM PRODUTO";
@@ -62,6 +63,31 @@ public class ConectaBD {
         } catch (SQLException ex) {
             Logger.getLogger(Lojinha.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+    }
+    
+    public void adicionarProduto() {
+
+        String querySql = "INSERT INTO PRODUTO(NOME,DESCRICAO,PRECO_COMPRA,PRECO_VENDA,QUANTIDADE,DT_CADASTRO" + "VALUES(?,?,?,?,?,?)"
+        
+        Lojinha loja = new Lojinha();
+        
+         try { 
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, loja.getNome());
+            stmt.setString(2, loja.getDescricao());
+            stmt.setString(3, loja.getPrecoCompra());
+            stmt.setString(4, loja.getPrecoVenda());
+            stmt.setString(5, loja.getQuantidade());
+            stmt.setString(6, new java.sql.Date(loja.getData()));
+            stmt.execute();
+            stmt.close();   
+        } 
+        catch (SQLException u) { 
+            throw new RuntimeException(u);
+        } 
+                
+       
 
     }
 }

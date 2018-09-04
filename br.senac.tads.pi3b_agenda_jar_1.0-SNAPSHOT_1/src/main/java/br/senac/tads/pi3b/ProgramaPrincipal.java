@@ -28,7 +28,7 @@ public class ProgramaPrincipal {
 
             System.out.println("Digite a opção"
                     + "1.Mostrar informaçoes dos produtos"
-                    + "2."
+                    + "2.Adicionar produto"
                     + "");
             //Recebe valor do usuario 
             entrada = sc.nextInt();
