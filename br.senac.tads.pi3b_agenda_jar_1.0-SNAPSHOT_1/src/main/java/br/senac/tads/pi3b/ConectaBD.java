@@ -87,11 +87,8 @@ public class ConectaBD {
             throw new RuntimeException(u);
         } 
          
-         
-         
+             
          
                 
-       
-
-    }
+           }
 }
