@@ -43,6 +43,7 @@ public class ProgramaPrincipal {
                 System.out.println("Quantidade:" + loja.getQuantidade());
 
                 
+                
             }
 
             conecta.executar();
