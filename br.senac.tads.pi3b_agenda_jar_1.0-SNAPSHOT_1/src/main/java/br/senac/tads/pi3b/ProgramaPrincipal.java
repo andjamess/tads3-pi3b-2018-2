@@ -42,6 +42,7 @@ public class ProgramaPrincipal {
                 System.out.println("Preço Venda :" + loja.getPrecoVenda());
                 System.out.println("Quantidade:" + loja.getQuantidade());
 
+                
             }
 
             conecta.executar();

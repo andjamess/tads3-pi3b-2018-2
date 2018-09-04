@@ -86,6 +86,9 @@ public class ConectaBD {
         catch (SQLException u) { 
             throw new RuntimeException(u);
         } 
+         
+         
+         
                 
        
 

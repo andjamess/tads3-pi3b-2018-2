@@ -51,6 +51,7 @@ public class Lojinha {
     public double getPrecoCompra() {
         return precoCompra;
     }
+    
 
     /**
      * @return the precoVenda
