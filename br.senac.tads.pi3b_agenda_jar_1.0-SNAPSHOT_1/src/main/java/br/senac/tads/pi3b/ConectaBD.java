@@ -19,10 +19,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author anderson.jscosta
- */
+
 public class ConectaBD {
 
     private Connection obterConexao() throws ClassNotFoundException, SQLException {
@@ -96,7 +93,7 @@ public class ConectaBD {
             System.out.println("Quantidade");
             
             
-            
+           
         String querySql = "INSERT INTO PRODUTOBD.PRODUTO(NOME,DESCRICAO,PRECO_COMPRA,PRECO_VENDA,QUANTIDADE,DT_CADASTRO" + "VALUES(?,?,?,?,?,?))";
         
 

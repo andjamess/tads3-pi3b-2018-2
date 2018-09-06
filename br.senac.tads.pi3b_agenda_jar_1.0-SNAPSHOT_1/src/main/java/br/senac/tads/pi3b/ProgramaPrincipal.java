@@ -2,10 +2,6 @@ package br.senac.tads.pi3b;
 
 import java.util.Scanner;
 
-/**
- *
- * @author anderson.jscosta
- */
 public class ProgramaPrincipal {
 
     public static void main(String[] args) {
