@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.senac.tads.pi3b;
 
 import java.util.Scanner;
@@ -14,49 +9,35 @@ import java.util.Scanner;
 public class ProgramaPrincipal {
 
     public static void main(String[] args) {
-        System.out.println("Entrou ");
-        // Conecta banco de dados 
-        ConectaBD conecta = new ConectaBD();
+        Scanner op = new Scanner(System.in);
         
-        System.out.println("Entrou !!");
-        // Declara objeto loja 
-        Lojinha loja = new Lojinha();
-        //Entrada do usuario 
-        int entrada = 0;
-        Scanner sc = new Scanner(System.in);
-        while (entrada == 0) {
+        double pesquisar, inserir, alterar, excluir;
+        int opcao;
 
-            System.out.println("Digite a opção"
-                    + "1.Mostrar informaçoes dos produtos"
-                    + "2.Adicionar produto"
-                    + "");
-            //Recebe valor do usuario 
-            entrada = sc.nextInt();
-            if (entrada == 1) {
-                conecta.busca();
-                
-                //Mostra informaçoes dos produtos 
-                System.out.println("Nome:" + loja.getNome());
-                System.out.println("Descriçao:" + loja.getDescricao());
-                System.out.println("Preço Compra:" + loja.getPrecoCompra());
-                System.out.println("Preço Venda :" + loja.getPrecoVenda());
-                System.out.println("Quantidade:" + loja.getQuantidade());
-            }
-                
-                
-            if(entrada==2){
-                
-                conecta.adicionarProduto();
-                
-                
+        System.out.println("Escolha a opção:\n"
+                + "1-Pesquisar\n"
+                + "2-Inserir\n"
+                + "3-Alterar\n"
+                + "4-Excluir");
 
-                
-                
-                
-            }
+        opcao = op.nextInt();
 
- 
+        switch (opcao) {
+            case 1:
+                System.out.println("Pesquisar");
+                break;
+            case 2:
+                System.out.println("Inserir");
+                break;
+            case 3:
+                System.out.println("Consultar");
+                break;
+            case 4:
+                System.out.println("Excluir");
+                break;
+
         }
+
     }
 
 }

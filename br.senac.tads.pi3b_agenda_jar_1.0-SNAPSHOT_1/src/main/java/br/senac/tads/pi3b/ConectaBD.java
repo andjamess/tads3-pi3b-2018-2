@@ -14,6 +14,10 @@ import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import br.senac.tads.pi3b.Lojinha;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -107,7 +111,7 @@ public class ConectaBD {
             stmt.setDouble(3, loja.getPrecoCompra());
             stmt.setDouble(4, loja.getPrecoVenda());
             stmt.setInt(5, loja.getQuantidade());
-            stmt.setString(6, loja.getData());
+            stmt.setDate(6, loja.getData());
             stmt.execute();
             stmt.close();   
         } 
@@ -121,17 +125,53 @@ public class ConectaBD {
         
         
                 
-           }
+          }
         
-        
-        
-        
-        
-        
-         
-                    
-                
-           
+        public static void atualizar(Lojinha loja)
+            throws SQLException, Exception {
 
+        String sql = "UPDATE Produto SET DATAHORA=?, NOME=?, DESCRICAO=?,"
+                + " PRECOCOMPRA=?, PRECOVENDA=?, CATEGORIA=?, WHERE (id=?)";
+
+       try (Connection conn = obterConexao();){
+               
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            
+            preparedStatement.setDate(1, loja.getData());
+            preparedStatement.setString (2, loja.getNome());
+            preparedStatement.setString(3, loja.getDescricao());
+            preparedStatement.setDouble(4, loja.getPrecoCompra());
+            preparedStatement.setDouble(5, loja.getPrecoVenda());
+            preparedStatement.setString(6, loja.getCategoria());
+            preparedStatement.setInt(7, loja.getId());
+            
+            preparedStatement.execute();
+        } catch (SQLException u) { 
+            throw new RuntimeException(u);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ConectaBD.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
+
+    public static void excluir(Integer id) throws SQLException, Exception {
+
+        String sql = "DELETE FROM Produto WHERE (id=?)";
+
+       try (Connection conn = obterConexao();){
+               
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+
+            preparedStatement.setBoolean(1, false);
+            preparedStatement.setInt(2, id);
+
+            preparedStatement.execute();
+        } catch (SQLException u) { 
+            throw new RuntimeException(u);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ConectaBD.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
+
+     
 
 }
