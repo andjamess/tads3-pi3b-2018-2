@@ -27,6 +27,7 @@ public class Lojinha {
     private int quantidade;
     private int id;
     private String data;
+    private String dtCadastro;
     /**
      * @return the nome
      */
@@ -111,6 +112,20 @@ public class Lojinha {
      */
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+
+    /**
+     * @return the dtCadastro
+     */
+    public String getDtCadastro() {
+        return dtCadastro;
+    }
+
+    /**
+     * @param dtCadastro the dtCadastro to set
+     */
+    public void setDtCadastro(String dtCadastro) {
+        this.dtCadastro = dtCadastro;
     }
 
     /**

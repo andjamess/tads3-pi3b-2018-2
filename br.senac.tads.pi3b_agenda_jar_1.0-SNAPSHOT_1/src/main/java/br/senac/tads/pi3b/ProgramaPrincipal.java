@@ -33,7 +33,7 @@ public class ProgramaPrincipal {
             //Recebe valor do usuario 
             entrada = sc.nextInt();
             if (entrada == 1) {
-                conecta.executar();
+                conecta.busca();
                 
                 //Mostra informaçoes dos produtos 
                 System.out.println("Nome:" + loja.getNome());
@@ -41,10 +41,21 @@ public class ProgramaPrincipal {
                 System.out.println("Preço Compra:" + loja.getPrecoCompra());
                 System.out.println("Preço Venda :" + loja.getPrecoVenda());
                 System.out.println("Quantidade:" + loja.getQuantidade());
-                                        
+            }
+                
+                
+            if(entrada==2){
+                
+                conecta.adicionarProduto();
+                
+                
+
+                
+                
+                
             }
 
-            conecta.executar();
+ 
         }
     }
 
