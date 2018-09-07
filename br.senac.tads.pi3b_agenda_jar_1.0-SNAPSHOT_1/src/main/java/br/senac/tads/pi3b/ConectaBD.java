@@ -15,10 +15,6 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import br.senac.tads.pi3b.Lojinha;
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class ConectaBD {
 
@@ -27,39 +23,50 @@ public class ConectaBD {
         Connection conn = null;
 
         Class.forName("com.mysql.jdbc.Driver");
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/agendabd", "root", "");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/PRODUTOBD", "root", "");
 
         return conn;
     }
-    
-    //Buscar produtos 
-    public void busca() {
+
+    //Mostra informaçoes
+    public void consultar() {
 
         String querySql = "SELECT ID,NOME,DESCRICAO,PRECO_COMPRA,PRECO_VENDA,QUANTIDADE,DT_CADASTRO FROM PRODUTOBD.PRODUTO";
 
         Lojinha loja = new Lojinha();
-        
-        
-        
-        try (Connection conn = obterConexao();
-                PreparedStatement stmt = conn.prepareStatement(querySql);
-                ResultSet resultados = stmt.executeQuery()) {
+
+        try (Connection conn = obterConexao()) {
+
+            PreparedStatement stmt = conn.prepareStatement(querySql);
+            ResultSet resultados = stmt.executeQuery();
+
             while (resultados.next()) {
-       // Recebe o valor do banco 
-            long id = resultados.getLong("ID");
-               
+
+                // Recebe o valor do banco 
+                int id = resultados.getInt("ID");
+                loja.setId(id);
+
                 String nome = resultados.getString("NOME");
-                loja.setNome(nome);            
+
                 String descricao = resultados.getString("DESCRICAO");
-                loja.setDescricao(descricao);
+
                 double preCompra = resultados.getDouble("PRECO_COMPRA");
-                loja.setPrecoCompra(preCompra);
-               double preVenda = resultados.getDouble("PRECO_VENDA");
-                loja.setPrecoVenda(preVenda);     
+
+                double preVenda = resultados.getDouble("PRECO_VENDA");
+
                 int quantidade = resultados.getInt("QUANTIDADE");
-                 loja.setQuantidade(quantidade);
-                 String dtCadastro = resultados.getString("DT_CADASTRO");
-                 loja.setDtCadastro(dtCadastro);
+
+                Date dtCadastro = resultados.getDate("DT_CADASTRO");
+
+                //Printa as informaçoes na tela         
+                System.out.println(""
+                        + ""
+                        + ":"
+                        + ""
+                        + " Nome:" + nome + "|" + " Descrição:" + descricao + "|" + " Preco compra:" + preCompra + "\n"
+                        + " Preco venda:" + preVenda + "|" + "Quantidade:" + quantidade + "|" + "\n" + "Data:" + dtCadastro
+                        + "\n"
+                );
             }
 
         } catch (ClassNotFoundException ex) {
@@ -69,38 +76,31 @@ public class ConectaBD {
         }
 
     }
-    
-    
-    
-    
-    
-    
-    
+
     //Adicionar os produtos 
-        public void adicionarProduto() {
+    public void adicionarProduto() {
 
-           Scanner sc = new Scanner(System.in);
-             Lojinha loja = new Lojinha();
-            // Setar informaçoes aqui 
-            System.out.println("Nome:");
-            
-            System.out.println("Descriçao");
-            
-            System.out.println("Preço compra");
-            
-            System.out.println("Preço venda");
-            
-            System.out.println("Quantidade");
-            
-            
-           
-        String querySql = "INSERT INTO PRODUTOBD.PRODUTO(NOME,DESCRICAO,PRECO_COMPRA,PRECO_VENDA,QUANTIDADE,DT_CADASTRO" + "VALUES(?,?,?,?,?,?))";
-        
+        Scanner sc = new Scanner(System.in);
+        Lojinha loja = new Lojinha();
 
-           
-              
-        try (Connection conn = obterConexao();){
-               
+        //Seta informaçoes aqui
+        System.out.println("Nome:");
+        loja.setNome(sc.nextLine());
+        System.out.println("Descriçao");
+        loja.setDescricao(sc.nextLine());
+        System.out.println("Preço compra");
+        loja.setPrecoCompra(sc.nextDouble());
+        System.out.println("Preço venda");
+        loja.setPrecoVenda(sc.nextDouble());
+        System.out.println("Quantidade");
+        loja.setQuantidade(sc.nextInt());
+        System.out.println("");
+        loja.setDtCadastro(new Date(System.currentTimeMillis()));
+
+        String querySql = "INSERT INTO PRODUTOBD.PRODUTO(NOME,DESCRICAO,PRECO_COMPRA,PRECO_VENDA,QUANTIDADE,DT_CADASTRO)  VALUES(?,?,?,?,?,?)";
+
+        try (Connection conn = obterConexao();) {
+
             PreparedStatement stmt = conn.prepareStatement(querySql);
 
             stmt.setString(1, loja.getNome());
@@ -110,65 +110,75 @@ public class ConectaBD {
             stmt.setInt(5, loja.getQuantidade());
             stmt.setDate(6, loja.getData());
             stmt.execute();
-            stmt.close();   
-        } 
-        catch (SQLException u) { 
-            throw new RuntimeException(u);
+            stmt.close();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConectaBD.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-         
-                
-        
-        
-                
-          }
-        
-        public static void atualizar(Lojinha loja)
-            throws SQLException, Exception {
+        } catch (SQLException ex) {
+            Logger.getLogger(ConectaBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void atualizar(Lojinha loja) {
 
         String sql = "UPDATE Produto SET DATAHORA=?, NOME=?, DESCRICAO=?,"
                 + " PRECOCOMPRA=?, PRECOVENDA=?, CATEGORIA=?, WHERE (id=?)";
 
-       try (Connection conn = obterConexao();){
-               
+        try (Connection conn = obterConexao()) {
+
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            
+
             preparedStatement.setDate(1, loja.getData());
-            preparedStatement.setString (2, loja.getNome());
+            preparedStatement.setString(2, loja.getNome());
             preparedStatement.setString(3, loja.getDescricao());
             preparedStatement.setDouble(4, loja.getPrecoCompra());
             preparedStatement.setDouble(5, loja.getPrecoVenda());
             preparedStatement.setString(6, loja.getCategoria());
             preparedStatement.setInt(7, loja.getId());
-            
+
             preparedStatement.execute();
-        } catch (SQLException u) { 
+        } catch (SQLException u) {
             throw new RuntimeException(u);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConectaBD.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
     }
 
-    public static void excluir(Integer id) throws SQLException, Exception {
+    public void excluir() {
+        Lojinha loja = new Lojinha();
+        Scanner op = new Scanner(System.in);
+        String nome = "";
+        System.out.println("Digite oque deseja deletar."
+                + "1. TUDO"
+                + "2. Registro especificado por nome"
+                + "");
+        String sql1 = "DELETE FROM  PRODUTOBD.PRODUTO ";
+        int opcao = op.nextInt();
 
-        String sql = "DELETE FROM Produto WHERE (id=?)";
+        if (opcao == 2) {
+            System.out.println("Escreva o nome cadastrado no registro:");
+            ///Bug
 
-       try (Connection conn = obterConexao();){
-               
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            nome = op.nextLine();
+            nome = op.nextLine();
 
-            preparedStatement.setBoolean(1, false);
-            preparedStatement.setInt(2, id);
+            sql1 = "SELECT*FROM `PRODUTOBD`.`PRODUTO` WHERE `NOME`="+"'"+nome+"'";
+            System.out.println("" + sql1);
+        }
 
-            preparedStatement.execute();
-        } catch (SQLException u) { 
-            throw new RuntimeException(u);
+        try (Connection conn = obterConexao();) {
+            PreparedStatement stmt = conn.prepareStatement(sql1);
+            ResultSet resultados = stmt.executeQuery();
+
+            loja.setId(resultados.getInt("ID"));
+            stmt = conn.prepareStatement("DELETE FROM PRODUTOBD.PRODUTO WHERE ID="+"'"+loja.getId()+"'");
+            System.out.println("Deletado com sucesso!");
+            stmt.execute();
+        } catch (SQLException u) {
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConectaBD.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
+
     }
-
-     
-
 }

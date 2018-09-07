@@ -5,14 +5,9 @@
  */
 package br.senac.tads.pi3b;
 
-import java.sql.Connection;
+
 import java.sql.Date;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 
 public class Lojinha {
@@ -24,8 +19,16 @@ public class Lojinha {
     private double precoVenda;
     private int quantidade;
     private Date data;
-    private String dtCadastro;
+    private Date dtCadastro;
     private String categoria;
+    
+    
+    
+    public  void Lojinha(){
+        
+        
+        
+    }
 
     public String getNome() {
         return nome;
@@ -79,11 +82,11 @@ public class Lojinha {
         this.quantidade = quantidade;
     }
 
-    public String getDtCadastro() {
+    public Date getDtCadastro() {
         return dtCadastro;
     }
 
-    public void setDtCadastro(String dtCadastro) {
+    public void setDtCadastro(Date dtCadastro) {
         this.dtCadastro = dtCadastro;
     }
 
