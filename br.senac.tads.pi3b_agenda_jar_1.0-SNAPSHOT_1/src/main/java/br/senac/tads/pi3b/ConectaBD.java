@@ -119,138 +119,74 @@ public class ConectaBD {
 
     }
 
-    public void deletar(Lojinha loja) {
+    public void alterar(Lojinha loja) {
 
         Scanner op = new Scanner(System.in);
         String nome = "";
-        System.out.println("Digite oque deseja deletar."
-                + "1. TUDO"
-                + "2. Registro especificado por nome"
-                + "");
-        
-        
-        
-        
-        String sql = "DELETE FROM  PRODUTOBD.PRODUTO ";
-        int opcao = op.nextInt();
-        
-        if(opcao==2){
-              System.out.println("Escreva o nome desejado:");
-            
-               nome = op.nextLine();
-  nome = op.nextLine();
-  
- sql = "UPDATE `PRODUTOBD`.`PRODUTO` SET `ID`='', `NOME`='', `DESCRICAO`='', `PRECO_COMPRA`='', `PRECO_VENDA`='', `QUANTIDADE`='', `DT_CADASTRO`='' WHERE `NOME`='"+nome;
-        }
+        String sql;
+
+        System.out.println("Digite o nome correspondente ao registro q deseja alterar:");
+        nome = op.nextLine();
+
+        sql = "UPDATE PRODUTOBD.PRODUTO SET NOME=?,DESCRICAO=?,PRECO_COMPRA=?,PRECO_VENDA=?,QUANTIDADE=? WHERE NOME=" + "'" + nome + "'";
+
         try (Connection conn = obterConexao()) {
 
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-
-            
+            System.out.println("Novo nome:");
+            preparedStatement.setString(1, op.nextLine());
+            System.out.println("Nova Descriçao:");
+            preparedStatement.setString(2, op.nextLine());
+            System.out.println("Novo Preco compra:");
+            preparedStatement.setDouble(3, op.nextDouble());
+            System.out.println("Novo Preco venda:");
+            preparedStatement.setDouble(4, op.nextDouble());
+            System.out.println("Nova Quantidade:");
+            preparedStatement.setInt(5, op.nextInt());
             preparedStatement.executeUpdate();
-          
-        
-   
-        }   catch (ClassNotFoundException ex) {
-                Logger.getLogger(ConectaBD.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(ConectaBD.class.getName()).log(Level.SEVERE, null, ex);
-            }
-    
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ConectaBD.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ConectaBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
+
     public void excluir() {
         Lojinha loja = new Lojinha();
         Scanner op = new Scanner(System.in);
         String nome = "";
         System.out.println("Digite oque deseja deletar."
-                + "1. TUDO" 
-                +""
+                + "1. TUDO"
+                + ""
                 + "2. Registro especificado por nome"
                 + "");
-        
-        
-        
-        
+
         String sql = "DELETE FROM  PRODUTOBD.PRODUTO ";
         int opcao = op.nextInt();
-        
-        if(opcao==2){
-              System.out.println("Escreva o nome desejado:");
-            
-               nome = op.nextLine();
-  nome = op.nextLine();
-  
-      sql = "DELETE FROM  PRODUTOBD.PRODUTO WHERE NOME='"+nome+"'";
+
+        if (opcao == 2) {
+            System.out.println("Escreva o nome desejado:");
+
+            nome = op.nextLine();
+            nome = op.nextLine();
+
+            sql = "DELETE FROM  PRODUTOBD.PRODUTO WHERE NOME='" + nome + "'";
             System.out.println(sql);
         }
-         
-           try (Connection conn = obterConexao();) {
-        
-        
-                 PreparedStatement stmt = conn.prepareStatement(sql);
-              
-              
-                 stmt.executeUpdate();
-        
-        
-         } catch (ClassNotFoundException ex) {
+
+        try (Connection conn = obterConexao();) {
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.executeUpdate();
+
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConectaBD.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(ConectaBD.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
-        }
-          
-        
-        
-        
-        
-//Aqui acontece a magica
-       
-        
-        
-        
-        
-        
-        
-//        if (opcao == 2) {
-//            System.out.println("Escreva o nome cadastrado no registro:");
-//            ///Bug
-//
-//            nome = op.nextLine();
-//            nome = op.nextLine();
-//
-//            sql1 = "SELECT*FROM `PRODUTOBD`.`PRODUTO` WHERE `NOME`="+ "'"+ nome +"'";
-//
-//            System.out.println("" + sql1);
-//        }
-//
-//        try (Connection conn = obterConexao();) {
-//            PreparedStatement stmt = conn.prepareStatement(sql1);
-//            ResultSet resultados = stmt.executeQuery();
-//
-//            loja.setId(resultados.getInt("ID"));
-//
-//            stmt.execute();
-//        } catch (SQLException u) {
-//
-//        } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(ConectaBD.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//        String sql2 = "DELETE FROM `PRODUTOBD`.`PRODUTO` WHERE `ID`="+"'"+loja.getId()+"'";
-//        if (opcao == 2) {
-//            try (Connection conn = obterConexao();) {
-//                PreparedStatement stmt = conn.prepareStatement(sql2);
-//                ResultSet resultados = stmt.executeQuery();
-//
-//                System.out.println("Deletado com sucesso!");
-//                stmt.execute();
-//            } catch (SQLException u) {
-//
-//            } catch (ClassNotFoundException ex) {
-//                Logger.getLogger(ConectaBD.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-//    }
+
+    }
 }

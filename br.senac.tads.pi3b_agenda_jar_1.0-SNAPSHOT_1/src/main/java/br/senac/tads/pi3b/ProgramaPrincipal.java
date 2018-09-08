@@ -15,7 +15,7 @@ public class ProgramaPrincipal {
 
 while(opcao!=0){
         System.out.println("Escolha a opção:\n"
-                + "1-Pesquisar\n"
+                + "1-Alterar\n"
                 + "2-Inserir\n"
                 + "3-Consultar\n"
                 + "4-Excluir"
@@ -25,8 +25,8 @@ while(opcao!=0){
 
         switch (opcao) {
             case 1:
-                System.out.println("Pesquisar informaçao especifica");
-            
+                System.out.println("Alterar");
+            conecta.alterar(loja);
                 break;
             case 2:
                 System.out.println("Inserir");
