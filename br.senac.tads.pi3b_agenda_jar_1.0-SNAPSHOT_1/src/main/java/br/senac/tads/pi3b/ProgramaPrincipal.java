@@ -33,7 +33,7 @@ while(opcao!=0){
                 conecta.adicionarProduto();
                 break;
             case 3:
-                System.out.println("Mostrar informaçoes ");
+                System.out.println("Mostrar informações ");
                           conecta.consultar();
                 break;
             case 4:

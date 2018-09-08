@@ -127,7 +127,7 @@ public class ConectaBD {
         String nome = "";
         String sql;
 
-        System.out.println("Digite o nome correspondente ao registro q deseja alterar:");
+        System.out.println("Digite o nome correspondente ao registro que deseja alterar:");
         nome = op.nextLine();
 
         sql = "UPDATE PRODUTOBD.PRODUTO SET NOME=?,DESCRICAO=?,PRECO_COMPRA=?,PRECO_VENDA=?,QUANTIDADE=? WHERE NOME=" + "'" + nome + "'";
@@ -137,7 +137,7 @@ public class ConectaBD {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             System.out.println("Novo nome:");
             preparedStatement.setString(1, op.nextLine());
-            System.out.println("Nova Descriçao:");
+            System.out.println("Nova Descrição:");
             preparedStatement.setString(2, op.nextLine());
             System.out.println("Novo Preco compra:");
             preparedStatement.setDouble(3, op.nextDouble());
@@ -159,7 +159,7 @@ public class ConectaBD {
         Lojinha loja = new Lojinha();
         Scanner op = new Scanner(System.in);
         String nome = "";
-        System.out.println("Digite oque deseja deletar.\n"
+        System.out.println("Digite o que deseja deletar.\n"
                 + "1. TUDO"
                 + "\n"
                 + "2. Registro especificado por nome"
