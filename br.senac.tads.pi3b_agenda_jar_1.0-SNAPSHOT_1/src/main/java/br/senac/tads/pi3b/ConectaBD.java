@@ -111,6 +111,8 @@ public class ConectaBD {
             stmt.setDate(6, loja.getData());
             stmt.execute();
             stmt.close();
+            System.out.println("Inserido com sucesso!"
+                    + "\n");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConectaBD.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -144,7 +146,7 @@ public class ConectaBD {
             System.out.println("Nova Quantidade:");
             preparedStatement.setInt(5, op.nextInt());
             preparedStatement.executeUpdate();
-
+            System.out.println("Atualizado com sucesso!");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConectaBD.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -157,9 +159,9 @@ public class ConectaBD {
         Lojinha loja = new Lojinha();
         Scanner op = new Scanner(System.in);
         String nome = "";
-        System.out.println("Digite oque deseja deletar."
+        System.out.println("Digite oque deseja deletar.\n"
                 + "1. TUDO"
-                + ""
+                + "\n"
                 + "2. Registro especificado por nome"
                 + "");
 
@@ -181,7 +183,8 @@ public class ConectaBD {
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.executeUpdate();
-
+            System.out.println("Deletado com sucesso!"
+                    + "\n");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConectaBD.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

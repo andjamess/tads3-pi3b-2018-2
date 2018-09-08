@@ -18,7 +18,7 @@ while(opcao!=0){
                 + "1-Alterar\n"
                 + "2-Inserir\n"
                 + "3-Consultar\n"
-                + "4-Excluir"
+                + "4-Excluir\n"
                 + "0-Sair");
 
         opcao = sc.nextInt();
