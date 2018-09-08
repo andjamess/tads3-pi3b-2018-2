@@ -7,7 +7,7 @@ public class ProgramaPrincipal {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         
-        
+        Lojinha loja = new Lojinha();
         
      ConectaBD conecta =new ConectaBD();
         double pesquisar, inserir, alterar, excluir;
@@ -17,7 +17,7 @@ while(opcao!=0){
         System.out.println("Escolha a opção:\n"
                 + "1-Pesquisar\n"
                 + "2-Inserir\n"
-                + "3-Alterar\n"
+                + "3-Consultar\n"
                 + "4-Excluir"
                 + "0-Sair");
 
@@ -26,7 +26,7 @@ while(opcao!=0){
         switch (opcao) {
             case 1:
                 System.out.println("Pesquisar informaçao especifica");
-
+            
                 break;
             case 2:
                 System.out.println("Inserir");
