@@ -14,7 +14,7 @@ public class BackOffice extends Funcionarios{
     
     //Funcionarios da retaguarda
     public BackOffice(String nome, String rg, String cpf, String filial, String cargo ) {
-        super(nome,  rg,  cpf,  filial,  cargo );
+        super(nome,rg,cpf,filial,cargo);
     }
     
 }

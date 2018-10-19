@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author AnD James
  */
-@WebServlet(name = "ServeletCadastroImovel1", urlPatterns = {"/ServeletCadastroImovel1"})
+@WebServlet(name = "ServeletCadastroImove1", urlPatterns = {"/ServeletCadastroImove1"})
 public class ServeletCadastroImovel extends HttpServlet {
 
     @Override

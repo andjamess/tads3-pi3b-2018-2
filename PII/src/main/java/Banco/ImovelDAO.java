@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 
 public class ImovelDAO {
     private Connection obterConexao() throws ClassNotFoundException, SQLException {
-String url = "jdbc:mysql://localhost:3306/PRODUTOBD";
+String url = "jdbc:mysql://localhost:3306/produtobd";
 String username = "root";
 String password = "";
 
@@ -61,10 +61,10 @@ catch (SQLException e) {
                 stmt.setString(3, imovel.getComplemento());
                 stmt.setString(4, imovel.getCidade());
                 stmt.setString(5, imovel.getEstado());
-                   stmt.setString(6, imovel.getComodos());
-                               stmt.setString(7, imovel.getSuites());
-                            stmt.setString(8, imovel.getDormitorios());
-                                        stmt.setString(9, imovel.getValor());
+           stmt.setString(6, imovel.getComodos());
+         stmt.setString(7, imovel.getSuites());
+         stmt.setString(8, imovel.getDormitorios());
+           stmt.setString(9, imovel.getValor());
                 stmt.execute();
                 stmt.close();
             }

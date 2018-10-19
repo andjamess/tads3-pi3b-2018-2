@@ -38,20 +38,15 @@ public class ServeletCadastroFuncionario extends HttpServlet {
         String cpf = request.getParameter("cpf");
         String filial = request.getParameter("filial");
         String cargo = request.getParameter("cargo");
-        
 
-
-        //Logica do servelet 
-     
         
         
         
-        
-        
-       
+ 
+        //Logica do servelet
      if(cargo.equals("vendedor")){
-                    BackOffice funcionario1 = new BackOffice (nome,rg,cpf,filial,cargo);
-               conecta.cadastraFuncionario(funcionario1);
+                    BackOffice funcionario = new BackOffice (nome,rg,cpf,filial,cargo);
+            conecta.cadastraFuncionario(funcionario);
              request.getRequestDispatcher("funcionarioCadastrado.jsp").forward(request, response);
          
         
