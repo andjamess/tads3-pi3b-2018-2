@@ -24,34 +24,21 @@ import java.util.logging.Logger;
 
 
 public class FuncionarioDAO {
+   private Connection obterConexao() throws ClassNotFoundException, SQLException {
+        String url = "jdbc:mysql://localhost:3306/produtobd";
+        String username = "root";
+        String password = "";
 
-    private Connection obterConexao() throws ClassNotFoundException, SQLException {
-String url = "jdbc:mysql://localhost:3306/PRODUTOBD";
-String username = "root";
-String password = "";
+        Connection conn = null;
 
-System.out.println("Connecting database...");
+        Class.forName("com.mysql.jdbc.Driver");
 
-try (Connection connection = DriverManager.getConnection(url, username, password)) {
-return connection;
-
-}
-
-
-catch (SQLException e) {
-
-    throw new IllegalStateException("Cannot connect the database!", e);
-}
-
+        Connection connection = DriverManager.getConnection(url, username, password);
+        return connection;
 
     }
 
-    public Date getPegaDataAtual() {
-        GregorianCalendar calendar = new GregorianCalendar();
-        Date data;
 
-        return (Date) calendar.getTime();
-    }
 
 
  public void cadastraFuncionario(GerenteVendas funcionario) {
@@ -62,7 +49,7 @@ catch (SQLException e) {
   
         
         
-        String querySql = "INSERT INTO PRODUTOBD.FUNCIONARIOS(NOME,RG,CPF,FILIAL,CARGO) VALUES(?,?,?,?,?)";
+        String querySql = "INSERT INTO produtobd.FUNCIONARIOS(NOME,RG,CPF,FILIAL,CARGO) VALUES(?,?,?,?,?)";
       
         try (Connection conn = obterConexao();) {
 

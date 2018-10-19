@@ -5,7 +5,6 @@
  */
 package Banco;
 
-
 import Classes.Imoveis;
 import java.sql.Connection;
 import java.sql.Date;
@@ -17,29 +16,22 @@ import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
-
 public class ImovelDAO {
+
     private Connection obterConexao() throws ClassNotFoundException, SQLException {
-String url = "jdbc:mysql://localhost:3306/PRODUTOBD";
-String username = "root";
-String password = "";
+        String url = "jdbc:mysql://localhost:3306/produtobd";
+        String username = "root";
+        String password = "";
 
-System.out.println("Connecting database...");
+        Connection conn = null;
 
-try (Connection connection = DriverManager.getConnection(url, username, password)) {
-return connection;
+        Class.forName("com.mysql.jdbc.Driver");
 
-}
-
-
-catch (SQLException e) {
-
-    throw new IllegalStateException("Cannot connect the database!", e);
-}
-
+        Connection connection = DriverManager.getConnection(url, username, password);
+        return connection;
 
     }
+
     public Date getPegaDataAtual() {
         GregorianCalendar calendar = new GregorianCalendar();
         Date data;
@@ -51,22 +43,30 @@ catch (SQLException e) {
     //Adicionar os produtos 
     public void adicionarImovel(Imoveis imovel) {
 
-        String querySql = "INSERT INTO PRODUTOBD.IMOVEIS(CEP,ENDERECO,COMPLEMENTO,CIDADE,ESTADO,COMODOS,SUITES,DORMITORIOS,VALOR) VALUES(?,?,?,?,?,?,?,?,?)";
-      
+        String querySql = "INSERT INTO produtobd.IMOVEIS(CEP,ENDERECO,COMPLEMENTO,CIDADE,ESTADO,COMODOS,SUITES,DORMITORIOS,VALOR) VALUES(?,?,?,?,?,?,?,?,?)";
+
         try (Connection conn = obterConexao();) {
 
             try (PreparedStatement stmt = conn.prepareStatement(querySql)) {
+            
+                
                 stmt.setString(1, imovel.getCep());
                 stmt.setString(2, imovel.getEndereco());
                 stmt.setString(3, imovel.getComplemento());
                 stmt.setString(4, imovel.getCidade());
                 stmt.setString(5, imovel.getEstado());
-                   stmt.setString(6, imovel.getComodos());
-                               stmt.setString(7, imovel.getSuites());
-                            stmt.setString(8, imovel.getDormitorios());
-                                        stmt.setString(9, imovel.getValor());
+                stmt.setString(6, imovel.getComodos());
+                stmt.setString(7, imovel.getSuites());
+                stmt.setString(8, imovel.getDormitorios());
+                stmt.setString(9, imovel.getValor());
+                
+                
+                
                 stmt.execute();
                 stmt.close();
+                
+                
+                
             }
             System.out.println("Inserido com sucesso!"
                     + "\n");

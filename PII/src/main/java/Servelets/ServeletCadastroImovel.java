@@ -5,11 +5,9 @@
  */
 package Servelets;
 
-import Banco.FuncionarioDAO;
 import Banco.ImovelDAO;
 import Classes.Imoveis;
 import java.io.IOException;
-import java.sql.Connection;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,20 +26,26 @@ public class ServeletCadastroImovel extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 //Pega dados do html 
+
+////Validaçao Campos
         ImovelDAO conecta = new ImovelDAO();
+  
+
+
+
 
         String cep = request.getParameter("cep");
         String endereco = request.getParameter("endereco");
         String complemento = request.getParameter("complemento");
         String cidade = request.getParameter("cidade");
         String estado = request.getParameter("estado");
-        String comodos = request.getParameter("comodos");
         String valor = request.getParameter("valor");
-        String suites = request.getParameter("suites");
+        String comodos = request.getParameter("comodos");
         String dormitorios = request.getParameter("dormitorios");
+        String suites = request.getParameter("suites");
 
-//Validaçao Campos
-        Imoveis imovel = new Imoveis(cep,endereco,complemento,cidade,estado,comodos,suites,dormitorios,valor);
+//
+      Imoveis imovel = new Imoveis(cep, endereco, complemento, cidade, estado, comodos, suites, dormitorios, valor);
 
         conecta.adicionarImovel(imovel);
 //Chama o jsp da pagina 

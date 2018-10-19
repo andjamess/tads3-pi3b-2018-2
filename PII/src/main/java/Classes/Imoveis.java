@@ -11,29 +11,26 @@ package Classes;
  */
 public class Imoveis {
 
-  private final String cep;
- private final String endereco;
-private final String complemento;
-private final String cidade;
-private final String estado;
-private final String comodos;
-private final String valor;
- private final String suites;
- private final String dormitorios;
- 
-  
-  
-    
-    public Imoveis(String cep,String endereco, String complemento,String cidade,String estado, String comodos, String suites,String dormitorios,String valor) {
-this.cep = cep;
-this.endereco = endereco;
-this.complemento = complemento;
+    private String cep;
+    private String endereco;
+    private String complemento;
+    private String cidade;
+    private String estado;
+    private String comodos;
+    private String valor;
+    private String suites;
+    private String dormitorios;
+
+    public Imoveis(String cep, String endereco, String complemento, String cidade, String estado, String comodos, String suites, String dormitorios, String valor) {
+        this.cep = cep;
+        this.endereco = endereco;
+        this.complemento = complemento;
         this.suites = suites;
         this.comodos = comodos;
         this.valor = valor;
-this.dormitorios = dormitorios;
-this.cidade = cidade;
-this.estado = estado;
+        this.dormitorios = dormitorios;
+        this.cidade = cidade;
+        this.estado = estado;
     }
 
     /**
@@ -98,8 +95,5 @@ this.estado = estado;
     public String getEstado() {
         return estado;
     }
-
-
-    
 
 }
