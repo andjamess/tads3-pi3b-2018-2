@@ -6,7 +6,7 @@
 package Servelets;
 
 import Banco.ImovelDAO;
-import Classes.Imoveis;
+import Classes.Imovel;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -33,7 +33,7 @@ public class ServeletCadastroImovel extends HttpServlet {
 
 
 
-
+        long id = 0;
         String cep = request.getParameter("cep");
         String endereco = request.getParameter("endereco");
         String complemento = request.getParameter("complemento");
@@ -45,10 +45,11 @@ public class ServeletCadastroImovel extends HttpServlet {
         String suites = request.getParameter("suites");
 
 //
-      Imoveis imovel = new Imoveis(cep, endereco, complemento, cidade, estado, comodos, suites, dormitorios, valor);
+      Imovel imovel = new Imovel(id,cep, endereco, complemento, cidade, estado, comodos, suites, dormitorios, valor);
 
         conecta.adicionarImovel(imovel);
 //Chama o jsp da pagina 
+request.setAttribute( "imovel", imovel);
         request.getRequestDispatcher("cadastroImovel.jsp").forward(request, response);
 
     }

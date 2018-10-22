@@ -9,8 +9,8 @@ package Classes;
  *
  * @author AnD James
  */
-public class Imoveis {
-
+public class Imovel {
+   private long id;
     private String cep;
     private String endereco;
     private String complemento;
@@ -21,7 +21,18 @@ public class Imoveis {
     private String suites;
     private String dormitorios;
 
-    public Imoveis(String cep, String endereco, String complemento, String cidade, String estado, String comodos, String suites, String dormitorios, String valor) {
+    
+    
+    
+    public Imovel() {
+
+    }
+
+    
+    
+    
+    public Imovel(long id,String cep, String endereco, String complemento, String cidade, String estado, String comodos, String suites, String dormitorios, String valor) {
+        this.id = id;
         this.cep = cep;
         this.endereco = endereco;
         this.complemento = complemento;
@@ -32,6 +43,8 @@ public class Imoveis {
         this.cidade = cidade;
         this.estado = estado;
     }
+
+
 
     /**
      * @return the cep
@@ -94,6 +107,20 @@ public class Imoveis {
      */
     public String getEstado() {
         return estado;
+    }
+
+    /**
+     * @return the id
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(long id) {
+        this.id = id;
     }
 
 }

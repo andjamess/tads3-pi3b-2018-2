@@ -8,6 +8,7 @@ package Banco;
 import Classes.BackOffice;
 import Classes.Funcionarios;
 import Classes.GerenteVendas;
+import Classes.Imovel;
 
 
 import java.sql.Connection;
@@ -38,6 +39,13 @@ public class FuncionarioDAO {
 
     }
 
+   
+
+   
+   
+   
+   
+   
 
 
 

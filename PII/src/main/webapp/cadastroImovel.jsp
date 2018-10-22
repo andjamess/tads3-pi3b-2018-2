@@ -70,7 +70,7 @@ color:#ff9900; /* a cor laranja para as letras */
         </a>
         <div class="dropdown-menu bg-dark navbar-primary" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="cadastroFuncionario.html" style="color: blue;">  Relatorios de vendas  </a>
-          <a class="dropdown-item" href="fomularioCadastroImovel.html"  style="color: blue;"> Listagem de Imoveis </a>
+          <a class="dropdown-item"  href="WEB-INF/relatorioImoveis.jsp"  style="color: blue;"> Listagem de Imoveis </a>
      
         </div>
       </li>
@@ -89,7 +89,7 @@ color:#ff9900; /* a cor laranja para as letras */
 
 
     </header>
-
+<jsp:useBean id="imovel" >
     <div class="container-fluid " style="color:orange; background-color:black;" >
  <h1 align="center" style="color:orange; background-color:black;">Cadastrado!</h1>
 
