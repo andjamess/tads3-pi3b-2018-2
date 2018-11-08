@@ -5,6 +5,7 @@
  */
 
 
+import Classes.Comandos;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -17,7 +18,7 @@ import java.util.logging.Logger;
 
 
 public  class LojaConn implements Comandos  {
-
+Scanner sc = new Scanner(System.in);
 public Connection obterConexao() throws ClassNotFoundException, SQLException {
 
         Connection conn = null;
@@ -33,10 +34,18 @@ public Connection obterConexao() throws ClassNotFoundException, SQLException {
 
     //Adicionar os produtos 
     public void adicionar () {
-
-    Produtos loja = new Produtos();
+       
+        
+        System.out.println("Produto com desconto?"
+                + "1.Sim"
+                + "2.Nao"
+                + "");
+       int result = sc.nextInt();  
+      
+if(result==2){
+ Produtos loja = new Produtos();
         LojaConn c = new LojaConn();
-        Scanner sc = new Scanner(System.in);
+      
 
         //Seta informaçoes aqui
         System.out.println("Nome:");
@@ -49,6 +58,9 @@ public Connection obterConexao() throws ClassNotFoundException, SQLException {
         loja.setPrecoVenda(sc.nextDouble());
         System.out.println("Quantidade");
         loja.setQuantidade(sc.nextInt());
+       
+        
+        
         System.out.println("");
 
 
@@ -71,7 +83,7 @@ public Connection obterConexao() throws ClassNotFoundException, SQLException {
             Logger.getLogger(LojaConn.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }
+    }}
     
 
     public void alterar() {
