@@ -100,68 +100,112 @@ public class ImovelDAO {
 
     }
 
-    
-public void update (Imovel imovel,String linha){
+      public Imovel consultaId2(String id,List listaImoveis) {
+
+        ResultSet result;
+        String querySql = "SELECT ID,CEP,ENDERECO,COMPLEMENTO,CIDADE,ESTADO,COMODOS,SUITES,DORMITORIOS,VALOR,DT_CADASTRO FROM PRODUTOBD.IMOVEIS WHERE ID="+ "'" +id+ "'";
         
-       String querySql ="UPDATE produtobd.IMOVEIS SET CEP=?,ENDERECO=?,COMPLEMENTO=?,CIDADE=?,ESTADO=?,COMODOS=?,SUITES=?,DORMITORIOS=?,VALOR=? WHERE ID="+"'"+linha+"'";
-         
-         
-         
-        try (Connection conn = obterConexao();) {
+        try (Connection conn = obterConexao(); PreparedStatement stmt = conn.prepareStatement(querySql);) {
+            result = stmt.executeQuery();
+        while (result.next()) {
+                Imovel imovel = new Imovel(result.getString("ID"), result.getString("CEP"), result.getString("ENDERECO"), result.getString("COMPLEMENTO"), result.getString("CIDADE"), result.getString("ESTADO"), result.getString("COMODOS"), result.getString("SUITES"), result.getString("DORMITORIOS"), result.getString("VALOR"));
+              
+     return imovel; 
+           }
+      
+        } catch (SQLException | ClassNotFoundException ex) {
 
-            try (PreparedStatement stmt = conn.prepareStatement(querySql)) {
-
-                stmt.setString(1, imovel.getCep());
-                stmt.setString(2, imovel.getEndereco());
-                stmt.setString(3, imovel.getComplemento());
-                stmt.setString(4, imovel.getCidade());
-                stmt.setString(5, imovel.getEstado());
-                stmt.setString(6, imovel.getComodos());
-                stmt.setString(7, imovel.getSuites());
-                stmt.setString(8, imovel.getDormitorios());
-                stmt.setString(9, imovel.getValor());
-
-                stmt.executeUpdate();
-
-                stmt.close();
-
-            }
-            System.out.println("Alterado com sucesso!"
-                    + "\n");
-        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ImovelDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }  
-        
-        
-        
+
+        }
+
+        return null;
+
     }
     
     
-public void deletar (){
-        
-       
+    public List consultaId(String id,List listaImoveis) {
 
-   String querySql = "DELETE FROM PRODUTOBD.IMOVEIS WHERE ID >= '0'";
+        ResultSet result;
+        String querySql = "SELECT ID,CEP,ENDERECO,COMPLEMENTO,CIDADE,ESTADO,COMODOS,SUITES,DORMITORIOS,VALOR,DT_CADASTRO FROM PRODUTOBD.IMOVEIS WHERE ID="+ "'" +id+ "'";
+        
+        try (Connection conn = obterConexao(); PreparedStatement stmt = conn.prepareStatement(querySql);) {
+            result = stmt.executeQuery();
+        while (result.next()) {
+                Imovel imovel = new Imovel(result.getString("ID"), result.getString("CEP"), result.getString("ENDERECO"), result.getString("COMPLEMENTO"), result.getString("CIDADE"), result.getString("ESTADO"), result.getString("COMODOS"), result.getString("SUITES"), result.getString("DORMITORIOS"), result.getString("VALOR"));
+               listaImoveis.add(imovel);
+
+           }
+            return listaImoveis;
+        } catch (SQLException | ClassNotFoundException ex) {
+
+            Logger.getLogger(ImovelDAO.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+        return null;
+
+    }
+    
+    
+    
+public void update (Imovel imovel,String linha){
+        
+       //String querySql ="UPDATE produtobd.IMOVEIS SET CEP=?,ENDERECO=?,COMPLEMENTO=?,CIDADE=?,ESTADO=?,COMODOS=?,SUITES=?,DORMITORIOS=?,VALOR=? WHERE ID="+"'"+linha+"'";
+         
+        
+       String querySql ="UPDATE produtobd.IMOVEIS SET CEP=?,ENDERECO=?,COMPLEMENTO=?,VALOR=? WHERE ID="+"'"+linha+"'";
          
          
-        try (Connection conn = obterConexao();
-                PreparedStatement stmt = conn.prepareStatement(querySql)) {
-//
+        try (Connection conn = obterConexao()) {
+
+        
+
+            PreparedStatement stmt = conn.prepareStatement(querySql);
+
+                stmt.setString(1,imovel.getCep());
+                stmt.setString(2,imovel.getEndereco());
+                stmt.setString(3,imovel.getComplemento());
+              //stmt.setString(4,imovel.getCidade());
+              // stmt.setString(5,imovel.getEstado());
+               // stmt.setString(6,imovel.getComodos());
+              // stmt.setString(7,imovel.getSuites());
+              //  stmt.setString(8,imovel.getDormitorios());
+                stmt.setString(4,imovel.getValor());
 
                 stmt.executeUpdate();
 
-           
+      
 
-            }
-   
-catch (ClassNotFoundException | SQLException ex) {
+            } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(ImovelDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }}}
+    
+    
+//public void deletar (){
+//        
+//       
+//
+//   String querySql = "DELETE FROM PRODUTOBD.IMOVEIS WHERE ID >= "+"'0'"+"";
+//         
+//         
+//        try (Connection conn = obterConexao();
+//                PreparedStatement stmt = conn.prepareStatement(querySql)) {
+////
+//
+//                stmt.executeUpdate();
+//
+//           
+//
+//            }
+//   
+//catch (ClassNotFoundException | SQLException ex) {
+//            Logger.getLogger(ImovelDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//}
 
-}
 
-
-} 
         
         
         

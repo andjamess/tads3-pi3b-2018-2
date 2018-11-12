@@ -31,35 +31,43 @@ public class ServeletUpdate extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
+  
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
  
         ImovelDAO dao = new ImovelDAO();
-        
-           dao.deletar();
-        //Temporario
-      // String id = request.getParameter("linha");
-//  
-//        String cep = request.getParameter("cep");
-//        String endereco = request.getParameter("endereco");
-//        String complemento = request.getParameter("complemento");
-//        String cidade = request.getParameter("cidade");
-//        String estado = request.getParameter("estado");
-//        String valor = request.getParameter("valor");
-//        String comodos = request.getParameter("comodos");
-//        String dormitorios = request.getParameter("dormitorios");
-//        String suites = request.getParameter("suites");
+     String linha = request.getParameter("id");
+    
+     
+     
+     
+     
 
-      //  Imovel imovel = new Imovel (cep,endereco,complemento,cidade,estado,valor,comodos,dormitorios,suites);
-        
-       
+        //Temporario
+
+        String cep = request.getParameter("cep");
+   String endereco = request.getParameter("endereco");
+      String complemento = request.getParameter("complemento");
+      // String cidade = request.getParameter("cidade");
+     //  String estado = request.getParameter("estado");
+       String valor = request.getParameter("valor");
+      // String comodos = request.getParameter("comodos");
+       //String dormitorios = request.getParameter("dormitorios");
+       //String suites = request.getParameter("suites");
+//
+     Imovel imovel = new Imovel ();
+     imovel.setCep(cep);
+     imovel.setComplemento(complemento);
+     imovel.setEndereco(endereco);
+     imovel.setValor(valor);
+//        
+             dao.update(imovel,linha);
        // dao.update(imovel,id);    
 
-
-         
-           request.getRequestDispatcher("/WEB-INF/jsp/relatorioImoveis.jsp")
-                .forward(request, response);
+ 
+         request.getRequestDispatcher("index.html").forward(request, response);
+//           request.getRequestDispatcher("/WEB-INF/jsp/relatorioImoveis.jsp")
+//                .forward(request, response);
 
         
         

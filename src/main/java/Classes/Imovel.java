@@ -137,4 +137,67 @@ public class Imovel {
         this.id = id;
     }
 
+    /**
+     * @param cep the cep to set
+     */
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    /**
+     * @param endereco the endereco to set
+     */
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    /**
+     * @param complemento the complemento to set
+     */
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    /**
+     * @param cidade the cidade to set
+     */
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    /**
+     * @param comodos the comodos to set
+     */
+    public void setComodos(String comodos) {
+        this.comodos = comodos;
+    }
+
+    /**
+     * @param valor the valor to set
+     */
+    public void setValor(String valor) {
+        this.valor = valor;
+    }
+
+    /**
+     * @param suites the suites to set
+     */
+    public void setSuites(String suites) {
+        this.suites = suites;
+    }
+
+    /**
+     * @param dormitorios the dormitorios to set
+     */
+    public void setDormitorios(String dormitorios) {
+        this.dormitorios = dormitorios;
+    }
+
 }

@@ -26,9 +26,26 @@ public class ImovelServico {
 
     public List<Imovel> listar() {
         ImovelDAO dao = new ImovelDAO();
-        List<Imovel> ListaDeImoveis = new ArrayList<Imovel>();
+        List<Imovel> ListaDeImoveis = new ArrayList <Imovel>();
         return dao.consultar(ListaDeImoveis);
+     
 
+    }
+    public List<Imovel> buscaId(String id,List ListaDeImoveis){
+        
+                ImovelDAO dao = new ImovelDAO();
+
+        return dao.consultaId(id,ListaDeImoveis);
+        
+    }
+    
+      public Imovel retornaImovel(String id,List ListaDeImoveis){
+       ImovelDAO dao = new ImovelDAO();
+       Imovel imovel =  dao.consultaId2(id,ListaDeImoveis);
+        
+        
+        
+        return imovel;
     }
 
 }

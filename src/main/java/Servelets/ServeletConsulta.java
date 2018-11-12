@@ -5,10 +5,12 @@
  */
 package Servelets;
 
-import Banco.ImovelDAO;
 import Classes.Imovel;
+import Services.ImovelServico;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Dayse
  */
-@WebServlet(name = "ServeletExclusao", urlPatterns = {"/ServeletExclusao"})
-public class ServeletExclusao extends HttpServlet {
+@WebServlet(name = "ServeletConsulta", urlPatterns = {"/Pesquisar"})
+public class ServeletConsulta extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,27 +33,33 @@ public class ServeletExclusao extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ImovelDAO dao = new ImovelDAO();
-        
-        
-        
-     String linha = request.getParameter("linha");
-        String cep = request.getParameter("cep");
-        String endereco = request.getParameter("endereco");
-        String complemento = request.getParameter("complemento");
-        String cidade = request.getParameter("cidade");
-        String estado = request.getParameter("estado");
-        String valor = request.getParameter("valor");
-        String comodos = request.getParameter("comodos");
-        String dormitorios = request.getParameter("dormitorios");
-        String suites = request.getParameter("suites");
+//         
+   String id = request.getParameter("id");
+         ImovelServico service = new ImovelServico();
+              List<Imovel> resultado = new ArrayList <Imovel>();
+           resultado = service.buscaId(id,resultado);
+           
+// 
+//        
+//         
+//      
+//      
+//      
 
-        Imovel imovel = new Imovel (cep,endereco,complemento,cidade,estado,valor,comodos,dormitorios,suites);
-    
-         
-           request.getRequestDispatcher("/WEB-INF/jsp/relatorioImoveis.jsp")
+      request.setAttribute("imovel",resultado);
+        request.getRequestDispatcher("/WEB-INF/jsp/atualizaImoveis.jsp")
                 .forward(request, response);
-    }}
+
+//
+    }
+        
+        
+        
+    }
+
+
+
 

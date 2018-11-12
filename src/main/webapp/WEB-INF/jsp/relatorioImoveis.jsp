@@ -175,138 +175,14 @@
 
                 </tbody>
 
+
             </table>
 
 
-            <form method="POST" action="ServeletUpdate"   name="formuser" id="formuser" >
-                <h1 align="center" style="color:orange; background-color:black;">Alteraçoes de Imoveis</h1>
-                <span  class="border border-dark" alt=form-inline  class="rounded" > <h4 style="color: orange;">Endereços</h4> <br>
 
 
-
-                    <div class="form-group form-row  col-md-2">
-                        <label>Linha que deseja alterar/Exluir</label>
-                        <input type="text" class="form-control" id="linha" name="linha" placeholder="Digite a linha"  maxlength="10">
-                    </div>
-
-
-
-                    <div class="form-group form-row  col-md-2">
-                        <label>CEP</label>
-                        <input type="tel" class="form-control" id="cep" name="cep" placeholder="00000-000"  maxlength="8">
-                    </div>
-
-
-                    <div class="form-group form-row   col-md-9">
-                        <label>Endereço</label>
-                        <input type="text" class="form-control" id="endereco" placeholder="Endereço do Imovel" name="endereco">
-                    </div>
-
-                    <div class="form-group form-row  col-md-9">
-                        <label >Complemento</label>
-                        <input type="text" class="form-control" id="complemento" placeholder="Apartamento, Studio, ou Casa" name="complemento">
-                    </div>
-
-                    <div class=" form-group form-row   col-md-5">
-                        <label>Cidade</label>
-                        <input type="text" class="form-control" id="cidade" name="cidade">
-                    </div>
-
-                    <div class="form-grou form-row   col-md-5">
-                        <label>Estado</label>
-                        <input type="text" class="form-control" id="estado" name="estado">
-                    </div>
-                    <br>
-
-
-                </span>  
-                <hr style="color: orange;">
-
-                <span  class="border border-dark"  alt="form-group" class="rounded" > <h4 style="color: orange">Caracteristicas</h4> <br>
-
-
-                    <div class="form-grou form-row   col-md-3">
-                        <label>Valor do aluguel</label>
-                        <input type="number" class="form-control" id="valor" name="valor">
-                    </div>
-                    <br>
-
-
-
-
-
-
-
-
-                    <div  class="form-group col-md-5 " >
-                        <label>Numero de Comodos:</label>
-                        <select class="form-control" name="comodos" id="comodos">
-                            <option selected>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4 ou mais</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group col-md-5" >
-                        <label>Numero de Dormitorios:</label>
-                        <select class="form-control" name="dormitorios" id="dormitorios">
-                            <option selected>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4 ou mais</option>
-                        </select>
-
-                    </div>
-
-
-                    <div class="form-group col-md-5 ">
-                        <label>Numero de Suites:</label>
-                        <select class="form-control" name="suites" id="suites">
-                            <option selected>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4 ou mais</option>
-                        </select>
-
-                    </div>
-
-
-
-                </span >
-
-
-                <div class="form-group">
-                    <label>Anexe a imagem do Imovel (Opcional)</label>
-                    <input type="file" class="form-control-file" id="arquivo" name=imagemImovel>
-                </div>
-
-
-                <br>  <br> 
-                <br>    
-                <div class="fixed-bottom" align="right" >
-
-
-                    <button  class="btn btn-primary btn-lg col-md-3" type="submit" >Alterar Campos</button><br>
-                    <button  class="btn btn-dark btn-lg col-md-3"  type="submit" >Excluir Linha</button><br>
-
-                </div>
-
-
-            </form>
-
-
-
-        </div>
-
-
-
-
-
-
+            <a href="Pesquisar.html" method="post">    <button method="post" class="btn btn-primary btn-lg col-md-3" type="button"  >Update</button><br></a> 
+              <button  class="btn btn-dark btn-lg col-md-3" type="submit" value="Apagar Campos" onclick="" >Deletar</button><br>
 
 
 
