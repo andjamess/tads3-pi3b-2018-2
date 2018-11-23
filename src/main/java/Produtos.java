@@ -100,7 +100,9 @@ public class Produtos {
     public void setPrecoVenda(double precoVenda) {
         this.precoVenda = precoVenda;
     }
-
+   public void setPrecoVenda(double precoVenda,int desconto) {
+        this.precoVenda = precoVenda-desconto;
+    }
     /**
      * @return the quantidade
      */

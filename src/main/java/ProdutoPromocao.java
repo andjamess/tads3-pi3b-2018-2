@@ -44,13 +44,13 @@ public class ProdutoPromocao extends Produtos {
 
     
     
-    
-    
-   public void setPrecoVenda(int desconto) {
-       
-       setPrecoVenda(getPrecoVenda()-this.desconto);
-       
-    }
+//    
+//    
+//   public void setPrecoVenda(int desconto) {
+//       
+//       setPrecoVenda(getPrecoVenda()-this.desconto);
+//       
+//    }
 
 
 }

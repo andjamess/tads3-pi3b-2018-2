@@ -36,41 +36,43 @@ public class LojaConn implements Comandos {
     //Adicionar os produtos 
     public void adicionar() {
 
-        System.out.println("O produto tem desconto ?"
+       System.out.println("O produto tem desconto ?"
                 + "1.Sim"
-                + "2.Nao"
-                + ""
-                + ""
-                + ""
-                + "");
-        int result = sc.nextInt();
-//Com desconto
-        if (result == 1) {
+            + ""
+              + "2.Nao"
+            + ""
+             + ""
+            + ""
+              + "");
+      int result = sc.nextInt();
+//  Com desconto
+       if (result == 1) {
 
-            ProdutoPromocao loja = new ProdutoPromocao();
+          ProdutoPromocao loja = new ProdutoPromocao();
 
-            LojaConn c = new LojaConn();
-            Scanner sc = new Scanner(System.in);
+           LojaConn c = new LojaConn();
+         Scanner sc = new Scanner(System.in);
 
-            //Seta informaçoes aqui
-            System.out.println("Nome:");
-            loja.setNome(sc.nextLine());
+          //Seta informaçoes aqui
+         System.out.println("Nome:");
+       loja.setNome(sc.nextLine());
             System.out.println("Descriçao");
-            loja.setDescricao(sc.nextLine());
-            System.out.println("Preço compra");
-            loja.setPrecoCompra(sc.nextDouble());
- //Polimorfismo aqui 
-            System.out.println("Preço venda");
+         loja.setDescricao(sc.nextLine());
+     System.out.println("Preço compra");
+      loja.setPrecoCompra(sc.nextDouble());
+
+          System.out.println("Preço venda");
             loja.setPrecoVenda(sc.nextDouble());
-            System.out.println("Quantidade");
-            loja.setQuantidade(sc.nextInt());
+           System.out.println("Quantidade");
+           loja.setQuantidade(sc.nextInt());
             System.out.println("Desconto");
-            loja.setDesconto(sc.nextInt());
-             loja.setPrecoVenda(loja.getDesconto());
+           loja.setDesconto(sc.nextInt());
+          
+     loja.setPrecoVenda(loja.getPrecoVenda(),loja.getDesconto());
            
             
             
-            String querySql = "INSERT INTO PRODUTOBD.PRODUTO(NOME,DESCRICAO,PRECO_COMPRA,PRECO_VENDA,QUANTIDADE,DESCONTO)  VALUES(?,?,?,?,?,?)";
+            String querySql = "INSERT INTO PRODUTOBD.PRODUTO(NOME,DESCRICAO,PRECO_COMPRA,PRECO_VENDA,QUANTIDADE)  VALUES(?,?,?,?,?)";
 
             try (Connection conn = c.obterConexao();) {
 
@@ -80,7 +82,7 @@ public class LojaConn implements Comandos {
                     stmt.setDouble(3, loja.getPrecoCompra());
                     stmt.setDouble(4, loja.getPrecoVenda());
                     stmt.setInt(5, loja.getQuantidade());
-                    stmt.setInt(6, loja.getDesconto());
+                // stmt.setInt(6, loja.getDesconto());
 
                     stmt.execute();
                 }
@@ -132,7 +134,7 @@ public class LojaConn implements Comandos {
                 Logger.getLogger(LojaConn.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }
+  }
 
     public void alterar() {
         Produtos loja = new Produtos();
@@ -204,7 +206,7 @@ public class LojaConn implements Comandos {
 
     public void consultar() {
         Produtos loja = new Produtos();
-        String querySql = "SELECT ID,NOME,DESCRICAO,PRECO_COMPRA,PRECO_VENDA,QUANTIDADE,DESCONTO,DT_CADASTRO FROM PRODUTOBD.PRODUTO";
+        String querySql = "SELECT ID,NOME,DESCRICAO,PRECO_COMPRA,PRECO_VENDA,QUANTIDADE,DT_CADASTRO FROM PRODUTOBD.PRODUTO";
 
         try (Connection conn = obterConexao()) {
 
