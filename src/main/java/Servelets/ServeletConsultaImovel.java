@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Dayse
  */
 @WebServlet(name = "ServeletConsulta", urlPatterns = {"/Pesquisar"})
-public class ServeletConsulta extends HttpServlet {
+public class ServeletConsultaImovel extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,7 +41,7 @@ public class ServeletConsulta extends HttpServlet {
          ImovelServico service = new ImovelServico();
               List<Imovel> resultado = new ArrayList <Imovel>();
            resultado = service.buscaId(id,resultado);
-           
+
 // 
 //        
 //         

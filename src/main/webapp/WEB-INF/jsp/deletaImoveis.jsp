@@ -248,7 +248,7 @@
 
 
 
-  <button  class="btn btn-primary btn-lg col-md-3" type="submit" >Enviar</button><br>
+  <button  class="btn btn-primary btn-lg col-md-3" type="submit" >Deletar</button><br>
   <button  class="btn btn-dark btn-lg col-md-3" type="reset" value="Apagar Campos" >Apagar Campos</button><br>
     
 </form>

@@ -182,9 +182,7 @@
 
 
             <a href="Pesquisar.html" method="post">    <button method="post" class="btn btn-primary btn-lg col-md-3" type="button"  >Update</button><br></a> 
-              <button  class="btn btn-dark btn-lg col-md-3" type="submit" value="Apagar Campos" onclick="" >Deletar</button><br>
-
-
+          
 
 
 

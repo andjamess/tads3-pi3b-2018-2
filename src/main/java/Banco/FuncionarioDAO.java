@@ -12,12 +12,14 @@ import Classes.Imovel;
 
 
 import java.sql.Connection;
-import java.sql.Date;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import java.sql.SQLException;
-import java.util.GregorianCalendar;
+import java.util.List;
+
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,8 +41,36 @@ public class FuncionarioDAO {
 
     }
 
-   
+   // Trabalhando no metodo 
 
+    public List consultar(List <Funcionarios> listaFuncionarios) {
+
+        ResultSet result;
+        String querySql = "SELECT * FROM PRODUTOBD.FUNCIONARIOS";
+        
+        try (Connection conn = obterConexao(); PreparedStatement stmt = conn.prepareStatement(querySql);) {
+            result = stmt.executeQuery();
+            while (result.next()) {
+                Funcionarios funcionarios = new Funcionarios(result.getString("ID"),result.getString("NOME"),result.getString("RG"),result.getString("CPF"), result.getString("FILIAL"), result.getString("CARGO"));
+               listaFuncionarios.add(funcionarios);
+
+            }
+          
+        } catch (SQLException | ClassNotFoundException ex) {
+
+            Logger.getLogger(ImovelDAO.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+  return listaFuncionarios;
+
+    }
+
+   
+   
+   
+   
+   
    
    
    

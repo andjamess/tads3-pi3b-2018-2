@@ -16,14 +16,15 @@ private String nome;
  private String cpf;
 private String filial;
   private String cargo;
-  
+private String id;
   
     public Funcionarios() {
    
 
     }
     
-    public Funcionarios(String nome, String rg, String cpf, String filial, String cargo) {
+    public Funcionarios (String nome, String rg, String cpf, String filial, String cargo) {
+   
         this.nome = nome;
         this.rg = rg;
         this.cpf = cpf;
@@ -32,6 +33,15 @@ private String filial;
 
     }
 
+    public Funcionarios(String id, String nome, String rg, String cpf, String filial, String cargo) {
+   this.id = id;
+        this.nome = nome;
+        this.rg = rg;
+        this.cpf = cpf;
+        this.filial = filial;
+        this.cargo = cargo;
+
+    }
     /**
      * @return the nome
      */
